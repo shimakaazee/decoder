@@ -1,0 +1,28 @@
+		body{
+			padding:10px;
+		}
+		img{
+			margin-top: 20px;
+			margin-bottom: 40px;
+		}
+	    #btn1{
+	    	margin-top: 40px;
+	    	margin-bottom: 20px;
+	    }
+		.row{
+			border:2px solid;
+			padding: 10px;
+		}
+		thead{
+			color: orange;
+		}
+		.panel-body{
+			text-align: center;
+			padding-left:20px;
+			padding-top:0px; 
+			padding-bottom:0px; 
+		}
+		h2{
+			font-family: Arial;
+			color: black;
+		}

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>md5 decoder</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="css/admin.css">
+    <script src="js/jquery.js"></script>
+
+    <script>
+        $(function () {
+            $("tr:contains('fail')").addClass("bg-danger");
+            $("tr:contains('succ')").addClass("bg-success");
+        });
+    </script>
+</head>
+<body>
+	<div class="container" >
+		<div class="row bg-success">
+			<div class="col-md-4">
+				<form action="index.php" method="post" enctype="multipart/form-data" class="form-horizon">
+				<div class="form-group"><input type="file" name="file"></div>
+				<div class="form-group"><button type="submit" class="btn btn-primary" id="btn1">add record</button></div>
+				</form>
+			
+			</div>
+			<div class="col-xs-8">
+				<p>Copyright &copy; 2017 · Victor Pin · md5 decoder</p>
+				<div class="panel">
+                    <div class="panel-body bg-info"><h2>status<?php if(isset($tip)){echo ": ".$tip;} ?></h2></div>
+				</div>
+			</div>
+		</div>
+		<div class="row bg-warning" align="center">
+			
+				<h1>md5 decoder</h1>
+				<form action="index.php" method="post" class="form-horizon" enctype="multipart/form-data">
+
+  					<div class="form-group">  
+      				<img src="img/logo.jpg" class="img-circle" align="center">
+        			</div>
+        			<div class="form-group" style="width: 50%">
+        		    	<input class="form-control" type="text" placeholder="" name="md5">
+        			</div>
+      				<div class="form-group">
+      					<input type="file" name="md5file"> 
+      				</div>
+      				<div class="form-group">
+      					<button type="submit" class="btn btn-lg btn-primary" id="btn2">decode!</button>
+      				</div> 		
+      				
+      			</form>
+			
+		</div>
+		<div class="row bg-warning">
+			<table class="table">
+			  <caption></caption>
+			  <thead class="bg-primary">
+			    <tr>
+				<th>status</th>
+			    <th>md5</th>
+			    <th>origin</th>
+			    <th>time used (s)</th>
+			    </tr>
+			  </thead>
+
+			  <tbody>
+			  <?php if(isset($res_arr)){$row=count($res_arr);} ?>
+			  <?php if(isset($row)){ for($i=0;$i<$row;$i++){?>
+			    <tr>
+				<th><?php if(!empty($res_arr)){if($res_arr[$i]){echo "succ";}else{echo "fail";}}?></th>
+				<th><?php if(!empty($data_arr)){if(strlen($data_arr[$i])!=32){echo md5($data_arr[$i]);}else{echo $data_arr[$i];}}?></th>
+				<th><?php if(!empty($data_arr)){if(strlen($data_arr[$i])==32){echo "no result";}else{echo $data_arr[$i];}}?></th>
+			    <th><?php if(!empty($time_arr)){echo $time_arr[$i];}?></th>
+			   
+			    </tr>
+			 <?php }}?>
+			</tbody>
+			</table>
+
+		</div>
+
+	</div>
+</body>
+</html>
